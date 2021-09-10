@@ -1,0 +1,44 @@
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    -->
+
+<div class="container">
+  <div class="row">
+  <div class="col-8 col-sm-8">
+  <% @articles.each do |article| %><br>
+      <h5 class="card-title"><%= link_to article.title, article %></h5>
+      <p class="card-text"><%= article.body %></p>
+      <p class="card-text"><%= article.user_id %></p>
+      <h6><%= image_tag 'a.jpg', height: 60%>Date 12/03/2021</h6>
+      <p><%= article.likes.count %> <%= (article.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+<% end %>
+<%= will_paginate @articles %>
+</div>
+
+<div class="col-4 col-sm-4"><h4>Recent Articles</h4>
+<% @articles.each do |article| %><br>
+<h6><%= link_to article.title, article %></h6>
+<% end %>
+<br>
+
+<h5>Some importent links</h5>
+
+<a href="https://www.w3schools.com/" target="_blank">RailsCarma is Now The Top Software</a> 
+<br>
+<a href="https://www.w3schools.com/" target="_blank">Development Company in Dallas
+</a> 
+<br>
+<a href="https://www.w3schools.com/" target="_blank">Data Scraping in Rails by Processing CSV</a> 
+<br>
+</div>
+</div>
+</div>
+

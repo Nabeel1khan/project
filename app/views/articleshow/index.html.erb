@@ -1,0 +1,32 @@
+<br>
+<div class="container">
+<h3>User Articles</h3>
+<%= link_to "New Article", new_article_path %>
+<div class="row">
+<div class="col-8 col-sm-8">
+<% @articles.each do |article| %>
+<% if(article.user_id == current_user.id) %>
+<br>
+  <h5 class="card-title"><%= link_to article.title, article %></h5>
+  <p class="card-text"><%= article.body %></p>
+  <p class="card-text"><%= article.user_id %></p>
+  <%= image_tag 'a.jpg', height: 90%>
+  <p><%= article.likes.count %> <%= (article.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+  <% end %>
+  <% end %>
+  <%= will_paginate @articles %>
+  </div>
+
+<div class="col-4 col-sm-4">
+<h4>My Articles</h4>
+<% @articles.each do |article| %>
+  <% if(article.user_id == current_user.id) %>
+  <br>
+    <h5 class="card-title"><%= link_to article.title, article %></h5>
+    <% end %>
+    <% end %>
+
+</div>
+</div>
+</div>
+

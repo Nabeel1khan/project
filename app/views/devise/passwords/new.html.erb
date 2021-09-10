@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 col-sm-8">
+
+<h3>Forgot your password?</h3>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control' %>
+  </div>
+<br>
+  <div class="actions">
+    <%= f.submit "Send me reset password instructions", class:'btn btn-success' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+</div>
+
+<div class="col-4 col-sm-4">
+
+
+<h5>Some importent links</h5>
+
+<a href="https://www.w3schools.com/" target="_blank">RailsCarma is Now The Top Software</a> 
+<br>
+<a href="https://www.w3schools.com/" target="_blank">Development Company in Dallas
+</a> 
+<br>
+<a href="https://www.w3schools.com/" target="_blank">Data Scraping in Rails by Processing CSV</a> 
+<br>
+</div>
+</div>
+</div>

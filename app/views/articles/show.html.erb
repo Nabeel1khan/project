@@ -1,0 +1,46 @@
+<div class="container-fluid">
+<br>
+  <div class="row">
+  <div class="col-3">
+....
+  </div>
+
+    <div class="col-6">
+    <h1><%= @article.title %></h1>
+    <p><%= @article.body%></p>
+    <p><%= image_tag(@article.image, style:'width:100%') %></p>
+    <br>
+    <%= image_tag 'd.png', height: 50%>
+    <h6>Feb 23, 2018 · 3 min read</h6>
+    <% @article.comments.each do |com| %><br><%= image_tag 'b.png', height: 50%>
+    <div class:'form-control' input type:'text'> </div>
+    <%= com.email %> : <%= com.body %><br>
+
+    <div class="form-floating">
+    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+    <label for="floatingTextarea">Comments</label>
+    </div>
+    <% end %>
+    
+    <br>
+    <%= button_to 'Like', create_like_path(article_id: @article.id) , method: :post, class:'btn btn-success' %>
+    <%= @article.likes.count %> <%= (@article.likes.count) == 1 ? 'Like' : 'Likes'%>
+    <% pre_like = @article.likes.find { |like| like.user_id == current_user.id} %>
+    <%= button_to 'Unlike', unlike_comment_path(article_id: @article.id), method: :post, class:'btn btn-danger' %>
+    <br>
+    <ul>
+    <li><%= link_to "Edit post", edit_article_path(@article) %></li>
+    <li><%= link_to "Destroy post", article_path(@article),
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } %></li>
+    </ul>
+    <br>
+    <h5>Add a comment:</h5>
+    <%= render 'comments/form' %>    
+    </div>
+
+
+    <div class="col-3">
+    ...
+    </div>
+    </div>

@@ -1,0 +1,39 @@
+  <br>
+  <div class="container">
+  <div class="row">
+  <div class="col-8 col-sm-8">
+
+  <%= form_with model: article do |form| %>
+
+  <%= form.label :status %><br>
+  <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+<br><br>
+    <%= form.label :title %><br>
+    <%= form.text_area :title, class:'form-control' %>
+    <% article.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %>
+    <% end %>
+<br>
+    <%= form.label :body %><br>
+    <%= form.text_area :body, class:'form-control' %><br>
+    <% article.errors.full_messages_for(:body).each do |message| %>
+    <%= message %>
+    <% end %>
+    <br>
+
+    <%= form.label :image %><br>
+    <%= form.file_field :image, class:'form-control' %><br>
+    <% article.errors.full_messages_for(:image).each do |message| %>
+    <%= message %>
+    <% end %>
+    <br><br>
+    <%= form.number_field :user_id, id: :article_user_id, class:'form-control', value: current_user.id, type: :hidden %>
+    <%= form.submit class:'btn btn-success' %>
+    <% end %>
+    </div>
+
+<div class="col-4 col-sm-4">
+<h4>New Articles</h4>
+</div>
+</div>
+</div>

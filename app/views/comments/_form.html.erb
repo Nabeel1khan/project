@@ -1,0 +1,22 @@
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+<p>
+  <%= form.label :status %><br>
+  <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+</p>
+    <p>
+      <%= form.text_field :commenter, class:'form-control', type: :hidden %>
+    </p>
+
+    <div class="form-floating">
+    <%= form.text_area :body, class:'form-control', placeholder:'Leave a comment here', id:'floatingTextarea' %>
+    <label for="floatingTextarea">Comments</label>
+    </div>
+
+    <p>
+    <%= form.text_field :email, value: current_user.email, class:'form-control', type: :hidden %><br>
+    </p>
+
+    <p>
+      <%= form.submit class:'btn btn-success' %>
+    </p>
+  <% end %>

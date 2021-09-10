@@ -1,0 +1,64 @@
+<br>
+<div class="container">
+<div class="row">
+<div class="col-8 col-sm-8">
+
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", type:'email', class:'form-control', placeholder:'Enter email' %>
+  </div>
+<br>
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password", type:'password', class:'form-control', placeholder:'Enter new password' %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+  </div>
+<br>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", type:'password', class:'form-control', placeholder:'Enter password confirmation' %>
+  </div>
+<br>
+  <div class="field">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password", type:'password', class:'form-control', placeholder:'Enter current password' %>
+  </div>
+<br>
+  <div class="actions">
+    <%= f.submit "Update Account", class:'btn btn-success' %>
+  </div>
+<% end %>
+
+</div>
+
+<div class="col-4 col-sm-4">
+<center><h5>My Account</h5>
+<%= image_tag 'a.jpg', height: 90%>
+</center>
+<br>
+  <div class="card" style="width:400px">
+    <div class="card-body">
+      <h4 class="card-title">Jane Doe</h4>
+      <p class="card-text">Some example text some example text. Jane Doe is an architect and engineer</p>
+      <a href="#" class="btn btn-primary">See Profile</a>
+    </div>
+    <%= image_tag 'c.png', width: 80%></div>
+    <br>
+  <p><%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:'btn btn-danger' %></p>
+</div>
+</div>
+</div>
+</div>
+

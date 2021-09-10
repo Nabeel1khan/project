@@ -1,0 +1,10 @@
+<div class="container">
+<div class="row">
+  <div class="col-8 col-sm-8"><% @a.each do |b| %><br>
+    <p class="card-text"><%= b.email %></p>
+    <p class="card-text"><%= b.encrypted_password %></p>
+<% end %>
+
+</div>
+</div>
+</div>
